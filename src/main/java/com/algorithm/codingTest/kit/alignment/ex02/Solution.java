@@ -1,7 +1,7 @@
 package com.algorithm.codingTest.kit.alignment.ex02;
 
-import java.util.Arrays;
-import java.util.stream.IntStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Solution {
 
@@ -13,15 +13,16 @@ public class Solution {
 		
 		String answer = "";
 		
-		String[] temp = IntStream.of(numbers)
-								.mapToObj(String::valueOf)
-								.sorted((a, b) -> {
-									
-									
-									return 0;
-								})
-								.toArray(String[]::new);
-		System.out.println(Arrays.asList(temp).toString());
+		List<Integer> list = new ArrayList<Integer>();
+		for(int i = 0; i < numbers.length; i++) {
+			String number = String.valueOf(numbers[i]);
+			for(int j = 0; j < numbers.length; j++) {
+				if(i != j) {
+					
+				}
+			}
+		}
+		
 		return answer;
 	}
 	
