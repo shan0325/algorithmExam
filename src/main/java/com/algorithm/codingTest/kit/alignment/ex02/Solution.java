@@ -27,8 +27,9 @@ public class Solution {
 	}
 	
 	public static void main(String[] args) {
-//		int[] numbers = {6, 10, 2}; //6210
-		int[] numbers = {3, 30, 34, 5, 9}; //9534330
+		int[] numbers = {6, 10, 2}; //6210
+//		6102, 6210, 1062, 1026, 2610,2106
+//		int[] numbers = {3, 30, 34, 5, 9}; //9534330
 		
 		Solution solution = new Solution();
 		String answer = solution.solution(numbers);
