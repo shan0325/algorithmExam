@@ -15,7 +15,7 @@ public class Solution {
 			String userNum = String.valueOf(baseball[i][0]);
 			String firstNum = userNum.substring(0, 1);
 			String secondNum = userNum.substring(1, 2);
-			String third = userNum.substring(2);
+			String thirdNum = userNum.substring(2);
 			
 			int strike = baseball[i][1];
 			int ball = baseball[i][2];
@@ -25,12 +25,12 @@ public class Solution {
 			for(String possibleNum : possibleNumbers) {
 				String firstNum2 = possibleNum.substring(0, 1);
 				String secondNum2 = possibleNum.substring(1, 2);
-				String third2 = possibleNum.substring(2);
+				String thirdNum2 = possibleNum.substring(2);
 				
 				if(!userNum.equals(possibleNum)) {
 					if(strike == 0) {
 						if(ball == 0) {
-							if(possibleNum.contains(firstNum) || possibleNum.contains(secondNum) || possibleNum.contains(third)) {
+							if(possibleNum.contains(firstNum) || possibleNum.contains(secondNum) || possibleNum.contains(thirdNum)) {
 								possibleNumbers.remove(possibleNum);
 							}
 						}
@@ -41,7 +41,7 @@ public class Solution {
 							if(!secondNum.equals(secondNum2) && possibleNum.contains(secondNum)) {
 								set.add(possibleNum);
 							}
-							if(!third.equals(third2) && possibleNum.contains(third)) {
+							if(!thirdNum.equals(thirdNum2) && possibleNum.contains(thirdNum)) {
 								set.add(possibleNum);
 							}
 						}
@@ -49,66 +49,65 @@ public class Solution {
 							if((secondNum + firstNum).equals(firstNum2 + secondNum2)) {
 								set.add(possibleNum);
 							}
-							if((third + secondNum).equals(firstNum2 + secondNum2)) {
+							if((thirdNum + secondNum).equals(firstNum2 + secondNum2)) {
 								set.add(possibleNum);
 							}
-							if((third + secondNum).equals(secondNum2 + third2)) {
+							if((thirdNum + secondNum).equals(secondNum2 + thirdNum2)) {
 								set.add(possibleNum);
 							}
-							if((third + firstNum).equals(secondNum2 + third2)) {
+							if((thirdNum + firstNum).equals(secondNum2 + thirdNum2)) {
 								set.add(possibleNum);
 							}
-							if((third + firstNum).equals(firstNum2 + third2)) {
+							if((thirdNum + firstNum).equals(firstNum2 + thirdNum2)) {
 								set.add(possibleNum);
 							}
 						}
 						else if(ball == 3) {
-							if((secondNum + third + firstNum).equals(possibleNum)) {
+							if((secondNum + thirdNum + firstNum).equals(possibleNum)) {
 								set.add(possibleNum);
 							}
-							if((third + firstNum + secondNum).equals(possibleNum)) {
+							if((thirdNum + firstNum + secondNum).equals(possibleNum)) {
 								set.add(possibleNum);
 							}
 						}
 					}
 					else if(strike == 1) {
 						if(ball == 0) {
-							if(firstNum.equals(firstNum2) && !possibleNum.contains(secondNum) && !possibleNum.contains(third)) {
+							if(firstNum.equals(firstNum2) && !possibleNum.contains(secondNum) && !possibleNum.contains(thirdNum)) {
 								set.add(possibleNum);
 							}
-							if(secondNum.equals(secondNum2) && !possibleNum.contains(firstNum) && !possibleNum.contains(third)) {
+							if(secondNum.equals(secondNum2) && !possibleNum.contains(firstNum) && !possibleNum.contains(thirdNum)) {
 								set.add(possibleNum);
 							}
-							if(third.equals(third2) && !possibleNum.contains(firstNum) && !possibleNum.contains(secondNum)) {
+							if(thirdNum.equals(thirdNum2) && !possibleNum.contains(firstNum) && !possibleNum.contains(secondNum)) {
 								set.add(possibleNum);
 							}
 						}
 						else if(ball == 1) {
-							if((firstNum + third).equals(firstNum2 + secondNum2) && !possibleNum.contains(secondNum)) {
+							if((firstNum + thirdNum).equals(firstNum2 + secondNum2) && !possibleNum.contains(secondNum)) {
 								set.add(possibleNum);
 							}
-							if((secondNum + firstNum).equals(secondNum2 + third2)) {
+							if((secondNum + firstNum).equals(secondNum2 + thirdNum2) && !possibleNum.contains(thirdNum)) {
 								set.add(possibleNum);
 							}
-							if((third + secondNum).equals(firstNum2 + secondNum2)) {
+							if((thirdNum + secondNum).equals(firstNum2 + secondNum2) && !possibleNum.contains(firstNum)) {
 								set.add(possibleNum);
 							}
-							if((firstNum + third).equals(secondNum2 + third2)) {
+							if((firstNum + thirdNum).equals(secondNum2 + thirdNum2) && !possibleNum.contains(secondNum)) {
 								set.add(possibleNum);
 							}
-							if((secondNum + third).equals(firstNum2 + third2)) {
+							if((secondNum + thirdNum).equals(firstNum2 + thirdNum2) && !possibleNum.contains(firstNum)) {
 								set.add(possibleNum);
 							}
-							
 						} 
 						else if(ball == 2) {
-							if((firstNum + third + secondNum).equals(possibleNum)) {
+							if((firstNum + thirdNum + secondNum).equals(possibleNum)) {
 								set.add(possibleNum);
 							}
-							if((third + secondNum + firstNum).equals(possibleNum)) {
+							if((thirdNum + secondNum + firstNum).equals(possibleNum)) {
 								set.add(possibleNum);
 							}
-							if((secondNum + firstNum + third).equals(possibleNum)) {
+							if((secondNum + firstNum + thirdNum).equals(possibleNum)) {
 								set.add(possibleNum);
 							}
 						}
@@ -118,10 +117,10 @@ public class Solution {
 							if((firstNum + secondNum).equals(firstNum2 + secondNum2)) {
 								set.add(possibleNum);
 							}
-							if((secondNum + third).equals(secondNum2 + third2)) {
+							if((secondNum + thirdNum).equals(secondNum2 + thirdNum2)) {
 								set.add(possibleNum);
 							}
-							if((firstNum + third).equals(firstNum2 + third2)) {
+							if((firstNum + thirdNum).equals(firstNum2 + thirdNum2)) {
 								set.add(possibleNum);
 							}
 						}
