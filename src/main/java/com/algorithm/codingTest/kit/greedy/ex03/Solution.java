@@ -1,59 +1,61 @@
 package com.algorithm.codingTest.kit.greedy.ex03;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Solution {
 	
 	public String solution(String number, int k) {
-		String answer = "";
-		List<Integer> numberList = new ArrayList<>();
-		for(int i = 0; i < number.length(); i++) {
-			numberList.add(Integer.parseInt(number.charAt(i) + ""));
-		}
-		System.out.println(numberList);
-	
-		for(int i = 0; i < k; i++) {
-			for(int j = 0; j < numberList.size() - 1; j++) {
-				if(numberList.get(j) < numberList.get(j + 1)) {
-					numberList.remove(j);
-					break;
-				}
+		int index = 0;
+		while(k > 0) {
+			if(Integer.parseInt(number.substring(index, index + 1)) < Integer.parseInt(number.substring(index + 1, index + 2))) {
+				number = number.substring(0, index) + number.substring(index + 1);
+				k--;
+				index = 0;
+				continue;
 			}
+			if(index == number.length() - 2) {
+				number = number.substring(0, number.length() - k);
+				break;
+			}
+			index++;
 		}
-		System.out.println(numberList);
-		
-		for(Integer num : numberList) {
-			answer += num;
-		}
-		
-		return answer;
+		return number;
 	}
 	
 	public String solution2(String number, int k) {
-		String answer = "";
-		
 		for(int i = 0; i < k; i++) {
 			for(int j = 0; j < number.length() - 1; j++) {
-				System.out.println(number.substring(j, j + 1) + " < " + number.substring(j + 1, j + 2));
 				if(Integer.parseInt(number.substring(j, j + 1)) < Integer.parseInt(number.substring(j + 1, j + 2))) {
-					number = number.substring(j, j + 1) + number.substring(j + 1);
+					number = number.substring(0, j) + number.substring(j + 1);
+					break;
+				}
+				if(j == number.length() - 2) {
+					number = number.substring(0, number.length() - k);
 					break;
 				}
 			}
 			System.out.println(number);
 		}
-		System.out.println(number);
+		return number;
+	}
+	
+	public String solution3(String number, int k) {
 		
-		return answer;
+		int length = number.length();
+		int startIndex = 0;
+		while(length - k < number.length()) {
+			String numStr = number.substring(startIndex, number.length() - k);
+			
+			
+		}
+		
+		return number;
 	}
 	
 	public static void main(String[] args) {
 		String number = "4177252841"; // 775841
 		int k = 4;
 		
-//		String number = "1010"; // 775841
-//		int k = 2;
+//		String number = "765432100";
+//		int k = 5;
 		
 		Solution solution = new Solution();
 		String answer = solution.solution2(number, k);
