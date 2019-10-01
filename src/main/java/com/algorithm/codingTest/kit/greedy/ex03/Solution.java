@@ -1,68 +1,25 @@
 package com.algorithm.codingTest.kit.greedy.ex03;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Solution {
-
+	
 	public String solution(String number, int k) {
-		int[] numbers = new int[number.length()];
-		for(int i = 0; i < number.length(); i++) {
-			numbers[i] = Integer.parseInt(number.charAt(i) + ""); 
-		}
-		
-		List<Integer> permt = new ArrayList<>();
-		
-		doPermutation(numbers, number.length() -  k, 0, permt);
-		System.out.println(permt);
-		
-		return String.valueOf(Collections.max(permt));
-	}
-	
-	public void doPermutation(int[] array, int r, int target, List<Integer> permt) {
-		if(target == r) {
-			String num = "";
-			for(int i = 0; i < r; i++) {
-				num += array[i];
-			}
-			permt.add(Integer.parseInt(num));
-			return;
-		}
-		
-		for(int i = target; i < array.length; i++) {
-			swap(array, i, target);
-			doPermutation(array, r, target + 1, permt);
-			swap(array, i, target);
-		}
-	}
-	
-	public void swap(int[] array, int a, int b) {
-		int temp = array[a];
-		array[a] = array[b];
-		array[b] = temp;
-	}
-	
-	public String solution2(String number, int k) {
 		String answer = "";
 		List<Integer> numberList = new ArrayList<>();
 		for(int i = 0; i < number.length(); i++) {
 			numberList.add(Integer.parseInt(number.charAt(i) + ""));
 		}
 		System.out.println(numberList);
-		
-		int index = 0;
-		while(index < k) {
-			int minIndex = 0;
-			int min = numberList.get(0);
-			for(int i = 1; i < numberList.size(); i++) {
-				if(min > numberList.get(i)) {
-					min = numberList.get(i);
-					minIndex = i;
+	
+		for(int i = 0; i < k; i++) {
+			for(int j = 0; j < numberList.size() - 1; j++) {
+				if(numberList.get(j) < numberList.get(j + 1)) {
+					numberList.remove(j);
+					break;
 				}
 			}
-			numberList.remove(minIndex);
-			index++;
 		}
 		System.out.println(numberList);
 		
@@ -73,9 +30,30 @@ public class Solution {
 		return answer;
 	}
 	
+	public String solution2(String number, int k) {
+		String answer = "";
+		
+		for(int i = 0; i < k; i++) {
+			for(int j = 0; j < number.length() - 1; j++) {
+				System.out.println(number.substring(j, j + 1) + " < " + number.substring(j + 1, j + 2));
+				if(Integer.parseInt(number.substring(j, j + 1)) < Integer.parseInt(number.substring(j + 1, j + 2))) {
+					number = number.substring(j, j + 1) + number.substring(j + 1);
+					break;
+				}
+			}
+			System.out.println(number);
+		}
+		System.out.println(number);
+		
+		return answer;
+	}
+	
 	public static void main(String[] args) {
-		String number = "4177252841";
+		String number = "4177252841"; // 775841
 		int k = 4;
+		
+//		String number = "1010"; // 775841
+//		int k = 2;
 		
 		Solution solution = new Solution();
 		String answer = solution.solution2(number, k);
