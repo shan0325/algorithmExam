@@ -25,36 +25,17 @@ public class Solution {
         
         while(answer <= sum) {
         	boolean isFound = false;
-        	final int findNum = answer;
         	
+        	int temp = answer;
         	for (int i = 0; i < weight.length; i++) {
-				if(findNum == weight[i]) {
-					isFound = true;
-					break;
-				}
+        		if(temp - weight[i] >= 0) {
+        			temp -= weight[i];
+        			if(temp == 0) {
+        				isFound = true;
+        				break;
+        			}
+        		}
 			}
-        	
-        	if(!isFound) {
-            	int[] nums = Arrays.stream(weight)
-    								.filter(num -> num < findNum)
-    								.toArray();
-            	
-            	for (int i = 0; i < nums.length; i++) {
-					System.out.print(nums[i] + ",");
-				}
-            	System.out.println();
-            	
-            	int temp = findNum;
-            	for (int i = 0; i < nums.length; i++) {
-            		if(temp - nums[i] >= 0) {
-            			temp -= nums[i];
-            			if(temp == 0) {
-            				isFound = true;
-            				break;
-            			}
-            		}
-				}
-        	}
         	
         	if(!isFound) {
         		break;
