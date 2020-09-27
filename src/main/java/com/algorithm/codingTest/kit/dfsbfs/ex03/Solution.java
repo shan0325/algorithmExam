@@ -64,43 +64,6 @@ public class Solution {
 		
 		find(index, node + 1, stack, target, words);
 	}
-	
-	public int solution2(String begin, String target, String[] words) {
-        int answer = 0;
-        
-        boolean isExist = false;
-        for (int i = 0; i < words.length; i++) {
-			if(words[i].equals(target)) {
-				isExist = true;
-				break;
-			}
-		}
-        if(!isExist) 
-        	return answer;
-        
-        Stack<String> stack = new Stack<>();
-        stack.push(begin);
-        
-        while(!stack.contains(target)) {
-        	find2(0, 0, stack, target, words);
-        	answer++;
-        }
-        
-        System.out.println("stack : " + stack);
-        
-        return answer + 1;
-    }
-	
-	private void find2(int index, int node, Stack<String> stack, String target, String[] words) {
-		
-		String begin = stack.peek();
-		String compWord = begin.substring(0, index) + begin.substring(index);
-		System.out.println("begin : " + begin + " // compWord : " + compWord);
-		
-		for (int i = 0; i < words.length; i++) {
-			find2(index, i, stack, target, words);
-		}
-	}
 
 	public static void main(String[] args) {
 		String begin = "hit", target = "cog";
@@ -109,5 +72,7 @@ public class Solution {
 		Solution solution = new Solution();
 		int answer = solution.solution(begin, target, words);
 		System.out.println("answer : " + answer);
+
+
 	}
 }
