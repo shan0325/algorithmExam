@@ -1,5 +1,7 @@
 package com.algorithm.codingTest.kit.hash.ex02;
 
+import java.util.Arrays;
+
 /**
  * 
  * 전화번호 목록
@@ -50,12 +52,27 @@ public class Solution {
 		}
 		return answer;
 	}
+
+	public boolean solution2(String[] phone_book) {
+		boolean answer = true;
+
+		Arrays.sort(phone_book);
+		System.out.println(Arrays.toString(phone_book));
+
+		for (int i = 0; i < phone_book.length - 1; i++) {
+			if(phone_book[i+1].startsWith(phone_book[i])) {
+				answer = false;
+			}
+		}
+
+		return answer;
+	}
 	
 	public static void main(String[] args) {
 		String[] phone_book = {"123", "789456", "789"};
 		
 		Solution solution = new Solution();
-		boolean answer = solution.solution(phone_book);
+		boolean answer = solution.solution2(phone_book);
 		System.out.println(answer);
 	}
 }
