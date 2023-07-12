@@ -10,6 +10,7 @@ public class Solution2 {
     int gx = 0;
     int gy = 0;
 
+    // dfs 사용하여 해결
     public int solution(String[] board) {
         // R의 위치
         int rx = 0;
