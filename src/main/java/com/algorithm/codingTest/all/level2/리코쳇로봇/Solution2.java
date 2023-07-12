@@ -2,8 +2,9 @@ package com.algorithm.codingTest.all.level2.리코쳇로봇;
 
 import java.util.Arrays;
 
-public class Solution {
+public class Solution2 {
     int answer = Integer.MAX_VALUE;
+    int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
     // G의 위치
     int gx = 0;
@@ -65,39 +66,19 @@ public class Solution {
         for (int i = 0; i < 4; i++) {
             int nextRy = ry;
             int nextRx = rx;
+            while (true) {
+                int tempNextRy = nextRy + directions[i][0];
+                int tempNextRx = nextRx + directions[i][1];
 
-            if (i == 0) {
-                while (true) {
-                    int tempNextRy = nextRy - 1;
-                    if (tempNextRy < 0 || "D".equals(boards[tempNextRy][nextRx])) {
-                        break;
-                    }
-                    nextRy = tempNextRy;
+                if (tempNextRy < 0 || tempNextRy >= yLen || tempNextRx < 0 || tempNextRx >= xLen) {
+                    break;
                 }
-            } else if (i == 1) {
-                while (true) {
-                    int tempNextRy = nextRy + 1;
-                    if (tempNextRy >= yLen || "D".equals(boards[tempNextRy][nextRx])) {
-                        break;
-                    }
-                    nextRy = tempNextRy;
+
+                if ("D".equals(boards[tempNextRy][tempNextRx])) {
+                    break;
                 }
-            } else if (i == 2) {
-                while (true) {
-                    int tempNextRx = nextRx - 1;
-                    if (tempNextRx < 0 || "D".equals(boards[nextRy][tempNextRx])) {
-                        break;
-                    }
-                    nextRx = tempNextRx;
-                }
-            } else if (i == 3) {
-                while (true) {
-                    int tempNextRx = nextRx + 1;
-                    if (tempNextRx >= xLen || "D".equals(boards[nextRy][tempNextRx])) {
-                        break;
-                    }
-                    nextRx = tempNextRx;
-                }
+                nextRy = tempNextRy;
+                nextRx = tempNextRx;
             }
 
             if (visited[nextRy][nextRx] <= count + 1) {
@@ -113,7 +94,7 @@ public class Solution {
         // 7
         String[] board = {"...D..R", ".D.G...", "....D.D", "D....D.", "..D...."};
 
-        Solution solution = new Solution();
+        Solution2 solution = new Solution2();
         int answer = solution.solution(board);
         System.out.println("answer = " + answer);
     }
